@@ -10338,6 +10338,11 @@
     "use-callback-ref" "^1.2.5"
     "use-sidecar" "^1.0.5"
 
+"react-icons@^4.3.1":
+  "integrity" "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="
+  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
+  "version" "4.3.1"
+
 "react-imgix@^9.3.0":
   "integrity" "sha512-ro0Apzp3t74qnUjmT2kBNF/ofcqZkMJfmBlKJFYgWDjqrnjE9uRvBxCDyiWyCyrdGfN2gPwHxEq1OmH2gxThpg=="
   "resolved" "https://registry.npmjs.org/react-imgix/-/react-imgix-9.3.0.tgz"
