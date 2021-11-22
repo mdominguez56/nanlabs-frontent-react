@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Background } from "react-imgix";
 import {
   Box,
   IconButton,
@@ -84,16 +85,8 @@ export default function Carousel() {
       </IconButton>
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
-          <Box
-            key={index}
-            height={"6xl"}
-            position="relative"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            backgroundImage={`url(${card.url})`}
-          >
-            <Container size="container.lg" height="600px" position="relative">
+          <Background key={index} src={card.url}>
+            <Container size="container.lg" height="1000px" position="relative">
               <Stack
                 spacing={6}
                 w={"full"}
@@ -103,7 +96,7 @@ export default function Carousel() {
                 transform="translate(0, -50%)"
               ></Stack>
             </Container>
-          </Box>
+          </Background>
         ))}
       </Slider>
     </Box>
