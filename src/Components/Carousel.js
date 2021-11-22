@@ -5,8 +5,6 @@ import {
   IconButton,
   useBreakpointValue,
   Stack,
-  Heading,
-  Text,
   Container,
 } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
@@ -17,7 +15,7 @@ const settings = {
   arrows: false,
   fade: true,
   infinite: true,
-  autoplay: true,
+  autoplay: false, // if you want to set the automatic playback you must change the value to true
   speed: 500,
   autoplaySpeed: 5000,
   slidesToShow: 1,
@@ -103,14 +101,7 @@ export default function Carousel() {
                 position="absolute"
                 top="50%"
                 transform="translate(0, -50%)"
-              >
-                <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
-                  {card.title}
-                </Heading>
-                <Text fontSize={{ base: "md", lg: "lg" }} color="GrayText">
-                  {card.text}
-                </Text>
-              </Stack>
+              ></Stack>
             </Container>
           </Box>
         ))}
