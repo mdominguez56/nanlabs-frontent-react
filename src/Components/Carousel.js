@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Background } from "react-imgix";
+import Imgix, { Background } from "react-imgix";
 import {
   Box,
   IconButton,
@@ -30,6 +30,7 @@ export default function Carousel() {
   const [slider, setSlider] = useState(0);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
+  const [direction, setDirection] = useState("");
   const [cards, setCards] = useState(null);
   useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -38,6 +39,19 @@ export default function Carousel() {
   }, []);
 
   if (!cards) return null;
+
+  function changeDirection() {
+    switch (direction) {
+      case "HV":
+        setDirection("");
+        break;
+      case "":
+        setDirection("HV");
+        break;
+      default:
+        setDirection("");
+    }
+  }
 
   return (
     <Box
@@ -85,17 +99,14 @@ export default function Carousel() {
       </IconButton>
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
-          <Background key={index} src={card.url}>
+          <Background key={index} src="" imgixParams={{ flip: {} }}>
             <Container size="container.lg" height="1000px" position="relative">
-              <Stack
-                spacing={6}
-                w={"full"}
-                maxW={"lg"}
-                position="absolute"
-                top="50%"
-                transform="translate(0, -50%)"
-              ></Stack>
+              <Imgix src={card.url} imgixParams={{ flip: direction }} />
             </Container>
+            <button onClick={() => setDirection("hv")}>
+              Cambiar direccion
+            </button>
+            <button onClick={() => setDirection("")}>Cambiar direccion</button>
           </Background>
         ))}
       </Slider>
