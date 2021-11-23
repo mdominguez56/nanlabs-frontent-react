@@ -11,6 +11,9 @@ In this project use the following technologies:
 - [React icons](https://react-icons.github.io/react-icons/)
 - [React imgix](https://github.com/imgix/react-imgix)
 - [React Slick](https://react-slick.neostack.com/)
+- [Heroku](https://www.heroku.com/home)
+
+You can see a DEMO here: [DEMO](https://glacial-waters-50999.herokuapp.com/)
 
 ## Start project
 
