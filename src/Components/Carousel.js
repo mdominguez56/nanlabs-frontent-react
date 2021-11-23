@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
+import "./Carousel.css";
 import axios from "axios";
-import Imgix, { Background } from "react-imgix";
+import Imgix from "react-imgix";
 import {
   Box,
   IconButton,
   useBreakpointValue,
-  Stack,
   Container,
+  Button,
 } from "@chakra-ui/react";
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import {
+  BiLeftArrowAlt,
+  BiRightArrowAlt,
+  BiUpArrowAlt,
+  BiDownArrowAlt,
+} from "react-icons/bi";
 import Slider from "react-slick";
 
 const settings = {
-  dots: true,
+  dots: false,
   arrows: false,
   fade: true,
   infinite: true,
@@ -28,9 +34,10 @@ const baseURL =
 
 export default function Carousel() {
   const [slider, setSlider] = useState(0);
-  const top = useBreakpointValue({ base: "90%", md: "50%" });
-  const side = useBreakpointValue({ base: "30%", md: "40px" });
+  const top = useBreakpointValue({ base: "90%", md: "35%" });
+  const side = useBreakpointValue({ base: "30%" });
   const [direction, setDirection] = useState("");
+  const [orient, setOrient] = useState();
   const [cards, setCards] = useState(null);
   useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -40,26 +47,8 @@ export default function Carousel() {
 
   if (!cards) return null;
 
-  function changeDirection() {
-    switch (direction) {
-      case "HV":
-        setDirection("");
-        break;
-      case "":
-        setDirection("HV");
-        break;
-      default:
-        setDirection("");
-    }
-  }
-
   return (
-    <Box
-      position={"relative"}
-      height={"100%"}
-      width={"full"}
-      overflow={"hidden"}
-    >
+    <Box position={"relative"} overflow={"hidden"}>
       <link
         rel="stylesheet"
         type="text/css"
@@ -99,17 +88,64 @@ export default function Carousel() {
       </IconButton>
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((card, index) => (
-          <Background key={index} src="" imgixParams={{ flip: {} }}>
-            <Container size="container.lg" height="1000px" position="relative">
-              <Imgix src={card.url} imgixParams={{ flip: direction }} />
+          <>
+            <Container height="500px" position="relative">
+              <Imgix
+                src={card.url}
+                imgixParams={{ flip: direction, orient: orient }}
+              />
             </Container>
-            <button onClick={() => setDirection("hv")}>
-              Cambiar direccion
-            </button>
-            <button onClick={() => setDirection("")}>Cambiar direccion</button>
-          </Background>
+          </>
         ))}
       </Slider>
+      <div className="button-container">
+        <div className="button-container__direction">
+          <Button
+            colorScheme="teal"
+            size="md"
+            onClick={() => setDirection("hv")}
+          >
+            Change direction
+            <BiDownArrowAlt />
+          </Button>
+          <Button colorScheme="blue" onClick={() => setDirection("")}>
+            Change direction
+            <BiUpArrowAlt />
+          </Button>
+        </div>
+        <div className="button-container__orient">
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(1)}>
+            Orient 1
+          </Button>
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(2)}>
+            Orient 2
+          </Button>
+        </div>
+        <div className="button-container__orient">
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(3)}>
+            Orient 3
+          </Button>
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(4)}>
+            Orient 4
+          </Button>
+        </div>
+        <div className="button-container__orient">
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(5)}>
+            Orient 5
+          </Button>
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(6)}>
+            Orient 6
+          </Button>
+        </div>
+        <div className="button-container__orient">
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(7)}>
+            Orient 7
+          </Button>
+          <Button colorScheme="teal" size="md" onClick={() => setOrient(8)}>
+            Orient 8
+          </Button>
+        </div>
+      </div>
     </Box>
   );
 }
