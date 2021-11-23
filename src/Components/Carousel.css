@@ -1,18 +1,20 @@
 .button-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 80vw;
-  height: 20vh;
+  height: 13vh;
 }
 
 .button-container__direction {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 10px;
 }
 
 .button-container__orient {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 10px;
 }
