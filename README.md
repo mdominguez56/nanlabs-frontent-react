@@ -14,7 +14,7 @@ In this project use the following technologies:
 
 ## Start project
 
-If you want to start the project, you need to follow the next steps:
+If you want to start with the project you must download it and execute the following script
 
 ### `yarn start`
 
